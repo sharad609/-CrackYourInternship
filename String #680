@@ -1,0 +1,25 @@
+680. Valid Palindrome II
+class Solution {
+    public boolean validPalindrome(String s) {
+        int lchar = 0;
+        int rchar = s.length() - 1;
+        while(lchar <= rchar){
+            if(s.charAt(lchar) == s.charAt(rchar)){
+                lchar++;
+                rchar--;
+            }
+            else return isPalindrome(s, lchar + 1, rchar) || isPalindrome(s, lchar, rchar - 1);
+        }
+        return true;
+    }
+    public boolean isPalindrome(String s, int left, int right){
+        while(left <= right){
+            if(s.charAt(left) == s.charAt(right)){
+                left++;
+                right--;
+            }
+            else return false;
+        }
+        return true;
+    }
+}
